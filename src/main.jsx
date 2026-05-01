@@ -20,10 +20,6 @@ const router = createBrowserRouter([
       { path: 'laptops', Component: Laptops }
     ]
   },
-  {
-    path: 'about',
-    element: <div>About me here</div>
-  }
 ]);
 
 createRoot(document.getElementById('root')).render(
