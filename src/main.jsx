@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 
@@ -8,6 +8,11 @@ import Root from './components/Root/Root';
 import Home from './components/Home/Home';
 import Mobiles from './components/Mobiles/Mobiles';
 import Laptops from './components/Laptops/Laptops';
+import Users from './components/Users/Users';
+import Users2 from './components/Users/Users2';
+import Todo from './components/Users/Todo';
+
+const todoPromise = fetch('https://jsonplaceholder.typicode.com/todos').then(res => res.json());
 
 
 const router = createBrowserRouter([
@@ -17,7 +22,23 @@ const router = createBrowserRouter([
     children: [
       { index: true, Component: Home },
       { path: 'mobiles', Component: Mobiles },
-      { path: 'laptops', Component: Laptops }
+      { path: 'laptops', Component: Laptops },
+      {
+        path: 'users',
+        loader: () => fetch('https://jsonplaceholder.typicode.com/users'),
+        Component: Users
+      },
+      {
+        path: 'users2',
+        loader: () => fetch('https://jsonplaceholder.typicode.com/posts'),
+        Component: Users2
+      },
+      {
+        path: 'todo',
+        element: <Suspense>
+          <Todo todoPromise={todoPromise}></Todo>
+        </Suspense>
+      }
     ]
   },
 ]);
