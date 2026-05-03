@@ -11,6 +11,7 @@ import Laptops from './components/Laptops/Laptops';
 import Users from './components/Users/Users';
 import Users2 from './components/Users/Users2';
 import Todo from './components/Users/Todo';
+import UserDetails from './components/UserDetails/UserDetails';
 
 const todoPromise = fetch('https://jsonplaceholder.typicode.com/todos').then(res => res.json());
 
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
         element: <Suspense fallback={<h1>Loading....</h1>}>
           <Todo todoPromise={todoPromise}></Todo>
         </Suspense>
+      },
+      {
+        path:'users/:userId',
+        loader:({params})=>fetch(`https://jsonplaceholder.typicode.com/users/${params.userId}`),
+        Component:UserDetails
       }
     ]
   },

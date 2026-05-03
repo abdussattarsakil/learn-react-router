@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
 const Users = () => {
 
@@ -16,6 +16,7 @@ const Users = () => {
                             <h1>{user.name}</h1>
                             <h1>{user.id}</h1>
                         </div>
+                        <Link to={`/users/${user.id}`}>Show details</Link>
                     </div>
                 ))
 
