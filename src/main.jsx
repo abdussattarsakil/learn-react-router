@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'todo',
-        element: <Suspense>
+        element: <Suspense fallback={<h1>Loading....</h1>}>
           <Todo todoPromise={todoPromise}></Todo>
         </Suspense>
       }
