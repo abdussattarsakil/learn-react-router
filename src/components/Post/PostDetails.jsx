@@ -4,8 +4,12 @@ const PostDetails = () => {
     const post=useLoaderData();
     const navigate= useNavigate();
     const {body,title}=post
+
+    const uerStyle={
+        border:'2px solid red'
+    }
     return (
-        <div>
+        <div style={uerStyle}>
             <h1>{title}</h1>
             <h1>{body}</h1>
             <br />
